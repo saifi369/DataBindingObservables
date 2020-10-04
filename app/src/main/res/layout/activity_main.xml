@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="com.saifi369.databindingobservables.PrimitiveObservablePerson" />
         <variable
             name="handler"
             type="com.saifi369.databindingobservables.MainActivity" />
+
         <variable
             name="person"
-            type="com.saifi369.databindingobservables.ObservablePerson" />
+            type="androidx.databinding.ObservableField&lt;PrimitiveObservablePerson>" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

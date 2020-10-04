@@ -5,11 +5,13 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.ObservableField
 import com.saifi369.databindingobservables.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private val person = ObservablePerson("Ali", 35)
+    private var person: ObservableField<PrimitiveObservablePerson> =
+        ObservableField(PrimitiveObservablePerson("Ali", 35))
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,8 +23,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onClick(view: View) {
-        person.age++
-        person.name = "Usman"
-        Toast.makeText(this, "Person age is ${person.age}", Toast.LENGTH_SHORT).show()
+        person.set(PrimitiveObservablePerson("AA", 100))
+//        person.get()?.name?.set("Usman")
+        Toast.makeText(this, "Person age is ${person.get()?.age?.get()}", Toast.LENGTH_SHORT).show()
     }
 }
