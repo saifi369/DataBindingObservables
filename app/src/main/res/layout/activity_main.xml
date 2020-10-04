@@ -9,7 +9,7 @@
             type="com.saifi369.databindingobservables.MainActivity" />
         <variable
             name="person"
-            type="com.saifi369.databindingobservables.Person" />
+            type="com.saifi369.databindingobservables.ObservablePerson" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
