@@ -4,34 +4,26 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.databinding.ObservableArrayList
-import androidx.databinding.ObservableArrayMap
+import androidx.lifecycle.ViewModelProvider
 import com.saifi369.databindingobservables.databinding.ActivityMainBinding
+import com.saifi369.databindingobservables.viewmodel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
 
-    val listData: ObservableArrayList<String> = ObservableArrayList()
-    val mapData: ObservableArrayMap<String, Any> = ObservableArrayMap()
-
     private lateinit var binding: ActivityMainBinding
+    private lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        listData.add("Ali")
-        listData.add("Usman")
-        listData.add("Hamza")
-
-        mapData.put("name", "Ali")
-        mapData.put("age", 35)
-
-        binding.data = mapData
+        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         binding.handler = this
+        binding.mainViewModel = viewModel
     }
 
     fun onClick(view: View) {
-        mapData.remove("name")
-        mapData.remove("age")
+        viewModel.person.name = "Usman"
+        viewModel.person.age = 45
     }
 }

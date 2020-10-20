@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="com.saifi369.databindingobservables.PrimitiveObservablePerson" />
         <variable
             name="handler"
             type="com.saifi369.databindingobservables.MainActivity" />
 
         <variable
-            name="data"
-            type="androidx.databinding.ObservableArrayMap&lt;String,Object>" />
+            name="mainViewModel"
+            type="com.saifi369.databindingobservables.viewmodel.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:text="@{String.valueOf(data.get(`name`)),default = `Hamza`}"
+            android:text="@{mainViewModel.person.name,default = `Hamza`}"
             android:textSize="36sp"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -36,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:text="@{String.valueOf(data[`age`]),default = `40`}"
+            android:text="@{String.valueOf(mainViewModel.person.age),default = `40`}"
             android:textSize="36sp"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintLeft_toLeftOf="parent"
